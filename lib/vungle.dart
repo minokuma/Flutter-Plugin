@@ -31,29 +31,29 @@ typedef void OnAdRewardedListener(String placementId);
 typedef void OnAdLeftApplicationListener(String placementId);
 
 class Vungle {
-  static const MethodChannel _channel = const MethodChannel('flutter_vungle');
+  static const MethodChannel _channel = MethodChannel('flutter_vungle');
 
-  static OnInitilizeListener onInitilizeListener;
+  static late OnInitilizeListener onInitilizeListener;
 
-  static OnAdPlayableListener onAdPlayableListener;
+  static late OnAdPlayableListener onAdPlayableListener;
 
-  static OnAdStartedListener onAdStartedListener;
+  static late OnAdStartedListener onAdStartedListener;
 
   // Deprecated
-  static OnAdFinishedListener onAdFinishedListener;
+  static late OnAdFinishedListener onAdFinishedListener;
 
-  static OnAdEndListener onAdEndListener;
+  static late OnAdEndListener onAdEndListener;
 
-  static OnAdClickedListener onAdClickedListener;
+  static late OnAdClickedListener onAdClickedListener;
 
-  static OnAdViewedListener onAdViewedListener;
+  static late OnAdViewedListener onAdViewedListener;
 
-  static OnAdRewardedListener onAdRewardedListener;
+  static late OnAdRewardedListener onAdRewardedListener;
 
-  static OnAdLeftApplicationListener onAdLeftApplicationListener;
+  static late OnAdLeftApplicationListener onAdLeftApplicationListener;
 
   /// Get version of Vungle native SDK
-  static Future<String> getSDKVersion() async {
+  static Future<String?> getSDKVersion() async {
     return _channel.invokeMethod('sdkVersion');
   }
 
@@ -178,7 +178,7 @@ class Vungle {
   }
 
   /// Get Consent Status
-  static Future<UserConsentStatus> getConsentStatus() async {
+  static Future<UserConsentStatus?> getConsentStatus() async {
     final String status = await _channel.invokeMethod('getConsentStatus', null);
     return _statusStringToUserConsentStatus[status];
   }
